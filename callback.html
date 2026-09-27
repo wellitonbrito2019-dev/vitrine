@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MeuBot - concluindo</title></head>
+<body style="font-family:Arial,sans-serif;background:#ffe600;display:flex;align-items:center;justify-content:center;height:100vh;margin:0">
+<div style="text-align:center;padding:24px">
+<h2>Quase lá...</h2>
+<p id="s" style="font-size:18px">Redirecionando pro MeuBot...</p>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var code = q.get("code");
+  var state = q.get("state") || "";
+  var err = q.get("error");
+  var s = document.getElementById("s");
+  if (err) { s.textContent = "Erro: " + err; return; }
+  if (!code) { s.textContent = "Código não encontrado na URL."; return; }
+  location.replace("http://localhost:3001/api/ml/auth?code=" + encodeURIComponent(code) + "&state=" + encodeURIComponent(state));
+})();
+</script>
+</div>
+</body>
+</html>
