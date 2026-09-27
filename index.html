@@ -11,7 +11,16 @@
   header { background: linear-gradient(135deg, #7b2ff7, #3483fa); color: #fff; padding: 26px 16px; text-align: center; }
   header h1 { font-size: 22px; }
   header p { font-size: 13px; opacity: .9; margin-top: 4px; }
-  main { max-width: 1200px; margin: 0 auto; padding: 14px; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .filtros { max-width: 1200px; margin: 14px auto 0; padding: 0 14px; display: flex; gap: 8px; overflow-x: auto; }
+  .filtros::-webkit-scrollbar { display: none; }
+  .chip { flex: 0 0 auto; background: #fff; border: 1px solid #e3e5ea; border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 600; color: #444; cursor: pointer; }
+  .chip span { color: #999; font-weight: 700; margin-left: 4px; }
+  .chip.on { background: #3483fa; border-color: #3483fa; color: #fff; }
+  .chip.on span { color: #dbeafe; }
+  main { max-width: 1200px; margin: 0 auto; padding: 6px 14px 14px; }
+  .sec-t { font-size: 17px; margin: 18px 0 12px; display: flex; align-items: center; gap: 8px; }
+  .sec-t i { font-style: normal; font-size: 12px; background: #eef2ff; color: #3483fa; border-radius: 999px; padding: 2px 9px; font-weight: 700; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
   .card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); display: flex; flex-direction: column; min-width: 0; }
   /* Quadrado garantido em QUALQUER navegador: altura vem do padding (100% da
      largura) em vez de aspect-ratio — imagem retrato/paisagem nunca estoura. */
@@ -24,7 +33,7 @@
   .old { font-size: 12px; color: #888; text-decoration: line-through; }
   .btn { margin: auto 10px 12px; background: #3483fa; color: #fff; text-decoration: none; text-align: center; font-size: 14px; font-weight: 700; padding: 10px; border-radius: 8px; }
   .btn:active { background: #2962ff; }
-  .empty { grid-column: 1 / -1; text-align: center; padding: 40px 10px; color: #666; font-size: 15px; line-height: 1.6; }
+  .empty { text-align: center; padding: 40px 10px; color: #666; font-size: 15px; line-height: 1.6; }
   footer { text-align: center; font-size: 11px; color: #999; padding: 18px 16px 30px; line-height: 1.6; }
 </style>
 </head>
@@ -33,10 +42,524 @@
     <h1>✨ Ofertas imperdíveis</h1>
     <p>Achadinhos selecionados — clique e compre no Mercado Livre</p>
   </header>
-  <main><p class="empty">Nenhuma oferta no momento 😅<br>Volta em breve que sempre tem novidade!</p></main>
+  <div class="filtros">
+    <button class="chip on" data-cat="all">✨ Todos <span>37</span></button>
+    <button class="chip" data-cat="acessorios-para-veiculos">Acessórios para Veículos <span>2</span></button>
+    <button class="chip" data-cat="animais">Animais <span>1</span></button>
+    <button class="chip" data-cat="bebes">Bebês <span>13</span></button>
+    <button class="chip" data-cat="beleza-e-cuidado-pessoal">Beleza e Cuidado Pessoal <span>6</span></button>
+    <button class="chip" data-cat="celulares-e-telefones">Celulares e Telefones <span>9</span></button>
+    <button class="chip" data-cat="games">Games <span>1</span></button>
+    <button class="chip" data-cat="informatica">Informática <span>4</span></button>
+    <button class="chip" data-cat="saude">Saúde <span>1</span></button>
+  </div>
+  <main>
+    <section class="sec" data-cat="acessorios-para-veiculos">
+      <h2 class="sec-t">Acessórios para Veículos <i>2</i></h2>
+      <div class="cards">
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_868088-MLA99446186924_112025-F.jpg" alt="Pneu 175/75 R14 At Borrachudo" loading="lazy">
+          
+        </div>
+        <h2>Pneu 175/75 R14 At Borrachudo</h2>
+        <div class="prices">
+          <span class="now">R$ 365,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB43792034?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_679968-MLA112386868215_052026-F.jpg" alt="Pneu 175/65/r14 Remoldado Roadwell Rdexcel 82p P" loading="lazy">
+          
+        </div>
+        <h2>Pneu 175/65/r14 Remoldado Roadwell Rdexcel 82p P</h2>
+        <div class="prices">
+          <span class="now">R$ 272,90</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB70393431?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      </div>
+    </section>
+
+    <section class="sec" data-cat="animais">
+      <h2 class="sec-t">Animais <i>1</i></h2>
+      <div class="cards">
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_821763-MLA110984515906_052026-F.jpg" alt="Ivermectina Ivertop 3,5% Injetável Bravet Injetavel 500ml" loading="lazy">
+          
+        </div>
+        <h2>Ivermectina Ivertop 3,5% Injetável Bravet Injetavel 500ml</h2>
+        <div class="prices">
+          <span class="now">R$ 184,59</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB70059400?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      </div>
+    </section>
+
+    <section class="sec" data-cat="bebes">
+      <h2 class="sec-t">Bebês <i>13</i></h2>
+      <div class="cards">
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_748048-MLA114960897637_072026-F.jpg" alt="Gel Adesivo Muda De Cor Vacina Febre Alívio Compressa Buba" loading="lazy">
+          <span class="off">-5%</span>
+        </div>
+        <h2>Gel Adesivo Muda De Cor Vacina Febre Alívio Compressa Buba</h2>
+        <div class="prices">
+          <span class="now">R$ 22,30</span>
+          <span class="old">R$ 23,50</span>
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB75655947?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_798006-MLU78420237571_082024-F.jpg" alt="Gel Adesivo Vacina e Febre para Alívio do Incômodo Vacinação Compressa Refrescante Buba" loading="lazy">
+          <span class="off">-8%</span>
+        </div>
+        <h2>Gel Adesivo Vacina e Febre para Alívio do Incômodo Vacinação Compressa Refrescante Buba</h2>
+        <div class="prices">
+          <span class="now">R$ 21,89</span>
+          <span class="old">R$ 23,90</span>
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB39351231?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_913866-MLA99931613405_112025-F.jpg" alt="Berço Para Bonecas Princesas Rosa Brinquedos Junges MDF Balança 60cm" loading="lazy">
+          
+        </div>
+        <h2>Berço Para Bonecas Princesas Rosa Brinquedos Junges MDF Balança 60cm</h2>
+        <div class="prices">
+          <span class="now">R$ 149,99</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB27311253?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_914147-MLA95291493131_102025-F.jpg" alt="Berço Balança com Boneca Faz Xixi BRINQUEMIX e BAMBOLA + Acessórios Violeta" loading="lazy">
+          
+        </div>
+        <h2>Berço Balança com Boneca Faz Xixi BRINQUEMIX e BAMBOLA + Acessórios Violeta</h2>
+        <div class="prices">
+          <span class="now">R$ 119,53</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB60180027?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_837974-MLA95179607618_102025-F.jpg" alt="Kit Presente Recém Nascido Ursinho E Manta Buba Cor Rosa" loading="lazy">
+          
+        </div>
+        <h2>Kit Presente Recém Nascido Ursinho E Manta Buba Cor Rosa</h2>
+        <div class="prices">
+          <span class="now">R$ 119,90</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB53445815?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_604390-MLA100060161147_122025-F.jpg" alt="Buba, Naninha Bebê - Ovelha Macia" loading="lazy">
+          
+        </div>
+        <h2>Buba, Naninha Bebê - Ovelha Macia</h2>
+        <div class="prices">
+          <span class="now">R$ 54,90</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB21703680?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_887804-MLA111223187416_052026-F.jpg" alt="Naninha Bebê Cão Lulu Laço Bebê, Minha Primeira Naninha" loading="lazy">
+          
+        </div>
+        <h2>Naninha Bebê Cão Lulu Laço Bebê, Minha Primeira Naninha</h2>
+        <div class="prices">
+          <span class="now">R$ 74,89</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB70266143?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_739974-MLA99606537142_122025-F.jpg" alt="Naninha de Bebê Leão Izzie Shop Hipoalergênica Macia para Conforto" loading="lazy">
+          
+        </div>
+        <h2>Naninha de Bebê Leão Izzie Shop Hipoalergênica Macia para Conforto</h2>
+        <div class="prices">
+          <span class="now">R$ 39,99</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB53279277?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_639285-MLU72831999119_112023-F.jpg" alt="Cadeirinha Fisher Price Spacesaver Simple Clean" loading="lazy">
+          
+        </div>
+        <h2>Cadeirinha Fisher Price Spacesaver Simple Clean</h2>
+        <div class="prices">
+          <span class="now">R$ 749,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB23220538?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_744322-MLA99508795436_112025-F.jpg" alt="Maral Carrinho Passeio Colorido" loading="lazy">
+          
+        </div>
+        <h2>Maral Carrinho Passeio Colorido</h2>
+        <div class="prices">
+          <span class="now">R$ 482,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB31775972?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_790914-MLA113971573683_062026-F.jpg" alt="Canguru Baby Cadeirinha , Bebê Passeio Cadeirinha Com Bolso Cor Bege" loading="lazy">
+          
+        </div>
+        <h2>Canguru Baby Cadeirinha , Bebê Passeio Cadeirinha Com Bolso Cor Bege</h2>
+        <div class="prices">
+          <span class="now">R$ 58,96</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB74701881?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_952401-MLA96876794617_102025-F.jpg" alt="Pelúcia Divertidamente Presente Criança Coleção" loading="lazy">
+          <span class="off">-10%</span>
+        </div>
+        <h2>Pelúcia Divertidamente Presente Criança Coleção</h2>
+        <div class="prices">
+          <span class="now">R$ 77,70</span>
+          <span class="old">R$ 86,34</span>
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB42640994?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_814542-MLA99940292565_112025-O.webp" alt="Bebê Conforto Para Bebê Comfort de 0 à 13kgs Preto Maxi Baby" loading="lazy">
+          
+        </div>
+        <h2>Bebê Conforto Para Bebê Comfort de 0 à 13kgs Preto Maxi Baby</h2>
+        <div class="prices">
+          <span class="now">R$ 299,90</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB37883472?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      </div>
+    </section>
+
+    <section class="sec" data-cat="beleza-e-cuidado-pessoal">
+      <h2 class="sec-t">Beleza e Cuidado Pessoal <i>6</i></h2>
+      <div class="cards">
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_855445-MLA116266702830_092026-F.jpg" alt="Ghk-cu Sérum Facial Rejuvenescedor Com Peptídeos De Cobre Todo Tipo De Pele Dia/noite" loading="lazy">
+          <span class="off">-32%</span>
+        </div>
+        <h2>Ghk-cu Sérum Facial Rejuvenescedor Com Peptídeos De Cobre Todo Tipo De Pele Dia/noite</h2>
+        <div class="prices">
+          <span class="now">R$ 87,59</span>
+          <span class="old">R$ 129,00</span>
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB79411658?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_750568-MLA114753993218_082026-F.jpg" alt="Sérum Facial Ghk-cu Sérum De Peptídeos De Cobre 30ml" loading="lazy">
+          <span class="off">-10%</span>
+        </div>
+        <h2>Sérum Facial Ghk-cu Sérum De Peptídeos De Cobre 30ml</h2>
+        <div class="prices">
+          <span class="now">R$ 89,10</span>
+          <span class="old">R$ 99,00</span>
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB75494824?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_636132-MLA112950608694_072026-F.jpg" alt="Ghk-cu Sérum de Peptídeos de Cobre 30ml Equilibre Vitaminique" loading="lazy">
+          
+        </div>
+        <h2>Ghk-cu Sérum de Peptídeos de Cobre 30ml Equilibre Vitaminique</h2>
+        <div class="prices">
+          <span class="now">R$ 99,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB62239446?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_871192-MLA92121275730_092025-F.jpg" alt="Karseell Collagen Máscara 500 Ml" loading="lazy">
+          
+        </div>
+        <h2>Karseell Collagen Máscara 500 Ml</h2>
+        <div class="prices">
+          <span class="now">R$ 99,90</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB39037401?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_842831-MLA99963285219_112025-O.webp" alt="Escova Rotativa Mondial Ceramica Tourmaline Ion 3x1 Erb-01 Rosa 127/220v" loading="lazy">
+          
+        </div>
+        <h2>Escova Rotativa Mondial Ceramica Tourmaline Ion 3x1 Erb-01 Rosa 127/220v</h2>
+        <div class="prices">
+          <span class="now">R$ 258,90</span>
+          
+        </div>
+        <a class="btn" href="https://meli.la/322PKWz" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_753132-MLA99450295832_112025-O.webp" alt="Máscara de Reconstrução Profunda para Cabelos Danificados, Força e Elasticidade Résistance Thérapiste Kérastase 200ml" loading="lazy">
+          
+        </div>
+        <h2>Máscara de Reconstrução Profunda para Cabelos Danificados, Força e Elasticidade Résistance Thérapiste Kérastase 200ml</h2>
+        <div class="prices">
+          <span class="now">R$ 399,90</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB19462412?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      </div>
+    </section>
+
+    <section class="sec" data-cat="celulares-e-telefones">
+      <h2 class="sec-t">Celulares e Telefones <i>9</i></h2>
+      <div class="cards">
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_976692-MLA100041237355_122025-F.jpg" alt="Celular Xiaomi Xiaomi Note 10" loading="lazy">
+          
+        </div>
+        <h2>Celular Xiaomi Xiaomi Note 10</h2>
+        <div class="prices">
+          <span class="now">R$ 1.697,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB17459959?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_942005-MLU77162713524_072024-F.jpg" alt="Celular Xiaomi Xiaomi Note 10" loading="lazy">
+          
+        </div>
+        <h2>Celular Xiaomi Xiaomi Note 10</h2>
+        <div class="prices">
+          <span class="now">R$ 1.450,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB17459956?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_894601-MLA100022071465_122025-F.jpg" alt="Celular Xiaomi Xiaomi Note 10" loading="lazy">
+          
+        </div>
+        <h2>Celular Xiaomi Xiaomi Note 10</h2>
+        <div class="prices">
+          <span class="now">R$ 1.480,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB17459954?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_646676-MLA99962144385_112025-F.jpg" alt="Celular Xiaomi 23100rn82l" loading="lazy">
+          
+        </div>
+        <h2>Celular Xiaomi 23100rn82l</h2>
+        <div class="prices">
+          <span class="now">R$ 850,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB38650615?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_809639-MLA109613384105_032026-F.jpg" alt="Smartphone Poco F8 Pro 5g Nfc Br 12+12gb Ram Virtual + 512gb, Preto" loading="lazy">
+          
+        </div>
+        <h2>Smartphone Poco F8 Pro 5g Nfc Br 12+12gb Ram Virtual + 512gb, Preto</h2>
+        <div class="prices">
+          <span class="now">R$ 3.690,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB67289426?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_782220-MLA110315816147_042026-F.jpg" alt="Xiaomi Poco F8 Pro 5g 24gb Ram 512gb Dual Sim Celular Preto" loading="lazy">
+          
+        </div>
+        <h2>Xiaomi Poco F8 Pro 5g 24gb Ram 512gb Dual Sim Celular Preto</h2>
+        <div class="prices">
+          <span class="now">R$ 4.223,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB67877589?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_646866-MLA99474082962_112025-F.jpg" alt="Xiaomi Poco X7 Poco X7 Dual Sim 8RAM 256 Gb PRETO" loading="lazy">
+          
+        </div>
+        <h2>Xiaomi Poco X7 Poco X7 Dual Sim 8RAM 256 Gb PRETO</h2>
+        <div class="prices">
+          <span class="now">R$ 1.835,42</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB47307432?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_910015-MLA99523893644_122025-F.jpg" alt="Película Cobertura Total Compat. POCO X5 5G, Poco X5, Poco X5 Pro 5G Hydrogel Privacy" loading="lazy">
+          <span class="off">-16%</span>
+        </div>
+        <h2>Película Cobertura Total Compat. POCO X5 5G, Poco X5, Poco X5 Pro 5G Hydrogel Privacy</h2>
+        <div class="prices">
+          <span class="now">R$ 37,55</span>
+          <span class="old">R$ 44,90</span>
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB50628051?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_614455-MLA95123679286_102025-F.jpg" alt="Capa Magnética Transparente para iPhone 15, 15 Pro e 15 Pro Max" loading="lazy">
+          
+        </div>
+        <h2>Capa Magnética Transparente para iPhone 15, 15 Pro e 15 Pro Max</h2>
+        <div class="prices">
+          <span class="now">R$ 14,99</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB38088059?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      </div>
+    </section>
+
+    <section class="sec" data-cat="games">
+      <h2 class="sec-t">Games <i>1</i></h2>
+      <div class="cards">
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_815351-MLA81058725327_112024-F.jpg" alt="Suporte para Controle do PS5" loading="lazy">
+          
+        </div>
+        <h2>Suporte para Controle do PS5</h2>
+        <div class="prices">
+          <span class="now">R$ 19,90</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB44205672?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      </div>
+    </section>
+
+    <section class="sec" data-cat="informatica">
+      <h2 class="sec-t">Informática <i>4</i></h2>
+      <div class="cards">
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_679435-MLA99368757468_112025-F.jpg" alt="Adaptador Ethernet Starlink para Starlink Retangle Dish Satellite Internet V2, adaptador Starlink para Rj45 Gigabit Ethernet para conexão de rede rápida e estável com Starlink Actuated Gen 2" loading="lazy">
+          
+        </div>
+        <h2>Adaptador Ethernet Starlink para Starlink Retangle Dish Satellite Internet V2, adaptador Starlink para Rj45 Gigabit Ethernet para conexão de rede rápida e estável com Starlink Actuated Gen 2</h2>
+        <div class="prices">
+          <span class="now">R$ 2,00</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB41928473?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_602115-MLA96137985317_102025-F.jpg" alt="Antena Starlink Internet Via Satélite Standard V4" loading="lazy">
+          <span class="off">-43%</span>
+        </div>
+        <h2>Antena Starlink Internet Via Satélite Standard V4</h2>
+        <div class="prices">
+          <span class="now">R$ 1.970,00</span>
+          <span class="old">R$ 3.479,80</span>
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB52435713?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_724863-MLA104795351359_012026-F.jpg" alt="Adaptador Ethernet Starlink para cabo Starlink Internet V2" loading="lazy">
+          
+        </div>
+        <h2>Adaptador Ethernet Starlink para cabo Starlink Internet V2</h2>
+        <div class="prices">
+          <span class="now">R$ 139,90</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB64279766?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_999693-MLA109976830723_042026-F.jpg" alt="Starlink Mini Starlink Mini Internet Branco" loading="lazy">
+          <span class="off">-43%</span>
+        </div>
+        <h2>Starlink Mini Starlink Mini Internet Branco</h2>
+        <div class="prices">
+          <span class="now">R$ 678,80</span>
+          <span class="old">R$ 1.189,00</span>
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB67536145?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      </div>
+    </section>
+
+    <section class="sec" data-cat="saude">
+      <h2 class="sec-t">Saúde <i>1</i></h2>
+      <div class="cards">
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_772825-MLA100014653287_122025-F.jpg" alt="Creatina Growth Monohidratada Creapure Sabor Cápsulas" loading="lazy">
+          
+        </div>
+        <h2>Creatina Growth Monohidratada Creapure Sabor Cápsulas</h2>
+        <div class="prices">
+          <span class="now">R$ 93,60</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/p/MLB56655816?forceInApp=false" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      </div>
+    </section></main>
   <footer>
     #publi Sou afiliado do Mercado Livre.<br>
     Comprar por aqui não custa nada extra para você — e me ajuda a manter as dicas ❤️
   </footer>
+  <script>
+    document.querySelectorAll('.chip').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.chip').forEach(function (x) { x.classList.remove('on'); });
+        b.classList.add('on');
+        var c = b.dataset.cat;
+        document.querySelectorAll('.sec').forEach(function (s) {
+          s.style.display = (c === 'all' || s.dataset.cat === c) ? '' : 'none';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
