@@ -30,6 +30,12 @@
   .loja { position: absolute; bottom: 8px; right: 8px; font-size: 10.5px; font-weight: 700; padding: 3px 7px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
   .loja.ml { background: #fff159; color: #333; }
   .loja.shopee { background: #ee4d2d; color: #fff; }
+  .rmv { display: none; position: absolute; top: 8px; right: 8px; background: #fff; border: 1px solid #e3e5ea;
+         border-radius: 6px; padding: 3px 7px; font-size: 13px; box-shadow: 0 1px 3px rgba(0,0,0,.25); cursor: pointer; }
+  html.adm .rmv { display: block; }
+  .adm-bar { position: fixed; left: 0; right: 0; bottom: 0; background: #173365; color: #fff; font-size: 12.5px;
+             padding: 9px 12px; text-align: center; z-index: 99; }
+  .adm-bar a { color: #9cf; text-decoration: underline; cursor: pointer; }
   .card h2 { font-size: 13px; font-weight: 500; line-height: 1.35; padding: 10px 10px 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; min-height: 62px; }
   .prices { padding: 6px 10px; display: flex; align-items: baseline; gap: 8px; }
   .now { font-size: 18px; font-weight: 800; color: #2962ff; }
@@ -46,10 +52,31 @@
     <p>Achadinhos selecionados — clique e compre no Mercado Livre ou Shopee</p>
   </header>
   <div class="filtros">
-    <button class="chip on" data-cat="all">✨ Todos <span>1</span></button>
+    <button class="chip on" data-cat="all">✨ Todos <span>2</span></button>
+    <button class="chip" data-cat="mercado-livre-outras-ofertas">Mercado Livre · Outras ofertas <span>1</span></button>
     <button class="chip" data-cat="shopee-outras-ofertas">Shopee · Outras ofertas <span>1</span></button>
   </div>
   <main>
+    <section class="sec" data-cat="mercado-livre-outras-ofertas">
+      <h2 class="sec-t">Mercado Livre · Outras ofertas <i>1</i></h2>
+      <div class="cards">
+      <article class="card">
+        <div class="ph">
+          <img src="https://http2.mlstatic.com/D_NQ_NP-teste.jpg" alt="Produto Teste Remocao" loading="lazy">
+          
+          <span class="loja ml">🏪 Mercado Livre</span>
+          <a class="rmv" href="#" data-id="cmukh94x70000pmxw9tm5t0wi" title="Tirar da vitrine">🗑️</a>
+        </div>
+        <h2>Produto Teste Remocao</h2>
+        <div class="prices">
+          <span class="now">R$ 11,11</span>
+          
+        </div>
+        <a class="btn" href="https://www.mercadolivre.com.br/anuncio/MLB999888777-produto-teste" target="_blank" rel="noopener">Comprar agora</a>
+      </article>
+      </div>
+    </section>
+
     <section class="sec" data-cat="shopee-outras-ofertas">
       <h2 class="sec-t">Shopee · Outras ofertas <i>1</i></h2>
       <div class="cards">
@@ -58,6 +85,7 @@
           <img src="https://down-br.img.susercontent.com/file/br-11134207-820l8-mnfnp761kv7m78" alt="Par Pneu Moto Michelin CB500 R 120/70-17 + 160/60-17 Pilot Street Radial Kawasaki XJ6" loading="lazy">
           
           <span class="loja shopee">🛒 Shopee</span>
+          <a class="rmv" href="#" data-id="cmukh2d1w000bpmi4vuezg2oe" title="Tirar da vitrine">🗑️</a>
         </div>
         <h2>Par Pneu Moto Michelin CB500 R 120/70-17 + 160/60-17 Pilot Street Radial Kawasaki XJ6</h2>
         <div class="prices">
@@ -83,6 +111,43 @@
         });
       });
     });
+
+    /* ---------- modo edição (só o dono): #adm=CHAVE ou já ativado antes ---------- */
+    (function () {
+      var CHAVE = "vitr-8f3k2qz7";
+      var ativo = false;
+      try {
+        if (location.hash.indexOf("#adm=") === 0 && location.hash.slice(5) === CHAVE) {
+          try { localStorage.setItem("vitrineAdm", "1"); } catch (x) {}
+          ativo = true;
+        } else {
+          ativo = localStorage.getItem("vitrineAdm") === "1";
+        }
+      } catch (e) { ativo = false; }
+      if (!ativo) return;
+      document.documentElement.className += " adm";
+      var bar = document.createElement("div");
+      bar.className = "adm-bar";
+      bar.innerHTML = '🗑️ Modo remoção ativo — toque no 🗑️ de um produto para tirá-lo da vitrine · <a href="#" data-sair>sair</a>';
+      document.body.appendChild(bar);
+      bar.querySelector("[data-sair]").addEventListener("click", function (ev) {
+        ev.preventDefault();
+        try { localStorage.removeItem("vitrineAdm"); } catch (x) {}
+        location.href = location.pathname + location.search;
+      });
+      Array.prototype.forEach.call(document.querySelectorAll(".rmv"), function (a) {
+        a.addEventListener("click", function (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          var card = a.closest(".card");
+          var nome = card && card.querySelector("h2") ? card.querySelector("h2").textContent : "este produto";
+          if (!confirm("Tirar da vitrine?\n\n" + nome.slice(0, 90) + "\n\n(Ele continua salvo no painel — é só voltar com 🌐)")) return;
+          location.href = "http://localhost:3001/api/products/vitrine-remover?chave=" + encodeURIComponent(CHAVE) +
+            "&id=" + encodeURIComponent(a.getAttribute("data-id")) +
+            "&origem=" + encodeURIComponent(location.href);
+        });
+      });
+    })();
   </script>
 </body>
 </html>
