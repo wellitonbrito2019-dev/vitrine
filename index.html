@@ -11,8 +11,12 @@
   header { background: linear-gradient(135deg, #7b2ff7, #3483fa); color: #fff; padding: 26px 16px; text-align: center; }
   header h1 { font-size: 22px; }
   header p { font-size: 13px; opacity: .9; margin-top: 4px; }
-  .filtros { max-width: 1200px; margin: 14px auto 0; padding: 0 14px; display: flex; gap: 8px; overflow-x: auto; }
-  .filtros::-webkit-scrollbar { display: none; }
+  .filtros { max-width: 1200px; margin: 14px auto 0; padding: 0 14px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: #b9bfcc transparent; user-select: none; -webkit-overflow-scrolling: touch; }
+  .filtros::-webkit-scrollbar { height: 8px; }
+  .filtros::-webkit-scrollbar-thumb { background: #b9bfcc; border-radius: 99px; }
+  .filtros::-webkit-scrollbar-track { background: transparent; }
+  .filtros::-webkit-scrollbar-corner { background: transparent; }
+  .filtros.puxando { cursor: grabbing; }
   .chip { flex: 0 0 auto; background: #fff; border: 1px solid #e3e5ea; border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 600; color: #444; cursor: pointer; }
   .chip span { color: #999; font-weight: 700; margin-left: 4px; }
   .chip.on { background: #3483fa; border-color: #3483fa; color: #fff; }
@@ -1084,6 +1088,37 @@
         });
       });
     });
+
+    /* ---------- abas: arrastar com o mouse + roda do mouse viram rolagem ---------- */
+    (function () {
+      var f = document.querySelector('.filtros');
+      if (!f) return;
+      var down = false, movido = false, x0 = 0, l0 = 0;
+      f.addEventListener('pointerdown', function (e) {
+        down = true; movido = false; x0 = e.clientX; l0 = f.scrollLeft;
+        try { f.setPointerCapture(e.pointerId); } catch (x) {}
+      });
+      f.addEventListener('pointermove', function (e) {
+        if (!down) return;
+        var d = e.clientX - x0;
+        if (!movido && Math.abs(d) > 5) { movido = true; f.classList.add('puxando'); }
+        if (movido) f.scrollLeft = l0 - d;
+      });
+      function solta() { down = false; f.classList.remove('puxando'); }
+      f.addEventListener('pointerup', solta);
+      f.addEventListener('pointercancel', solta);
+      /* arrastou = não era clique: não pode filtrar a categoria por engano */
+      f.addEventListener('click', function (e) {
+        if (movido) { movido = false; e.stopPropagation(); e.preventDefault(); }
+      }, true);
+      /* roda do mouse (em cima das abas) rola as abas na horizontal */
+      f.addEventListener('wheel', function (e) {
+        if (Math.abs(e.deltaX) >= Math.abs(e.deltaY)) return;
+        var antes = f.scrollLeft;
+        f.scrollLeft += e.deltaY;
+        if (f.scrollLeft !== antes) e.preventDefault();
+      }, { passive: false });
+    })();
 
     /* ---------- modo edição (só o dono): #adm=CHAVE ou já ativado antes ---------- */
     (function () {
